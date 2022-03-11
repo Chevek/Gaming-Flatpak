@@ -1,3 +1,7 @@
+.0.3-alpah
+* Added applications: Heroic Games Launcher, TeamSpeak, GNOME Boxes, DuckStation, DOSBox Staging, Dolphin Emulator, DeSmuME, AntiMicroX, Coolero, RPCS3, PCSX2.
+* Resize selecting window (zenity & kdialog)
+
 0.2-alpha
 * New screen to choose what to install (zenity/kdialog/cli)
 * First pass to add support for config files

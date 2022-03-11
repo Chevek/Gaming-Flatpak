@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.2
+GAMING_FLATPAK_VERSION=0.3
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 02 - 25         ##
+##         2022 - 03 - 11         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -57,22 +57,6 @@ en:Launcher for the Steam service.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.valvesoftware.Steam
 
-# ProtonGE 
-name:Proton-GE
-url:https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-fr:Version personnalisée de Proton.
-en:Custom build of Proton.
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
-
-# ProtonUP-QT
-name:ProtonUp-Qt
-url:https://flathub.org/apps/details/net.davidotek.pupgui2
-fr:Installe des outils basés sur Wine et Proton.
-en:Install Wine- and Proton-based tools.
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub net.davidotek.pupgui2
-
 # Lutris dependencies
 # org.freedesktop.Platform.GL32.default/x86_64/21.08 org.freedesktop.Platform.GL.default/x86_64/21.08 already installed at this point
 #fr:Installation des dépendances pour Lutris.
@@ -93,6 +77,78 @@ dependencies:flatpak install --assumeyes --noninteractive flathub org.freedeskto
 # already installed with flathub org.gnome.Platform/x86_64/41:
 #dependencies:flatpak install --assumeyes --noninteractive flathub org.freedesktop.Platform.GL.default/x86_64/21.08
 flatpak install --user --assumeyes --noninteractive flathub-beta net.lutris.Lutris//beta
+
+# HeroicGamesLauncher
+name:Heroic Games Launcher
+url:https://flathub.org/apps/details/com.heroicgameslauncher.hgl
+fr:Un lanceur libre pour Epic Games et GOG.
+en:An Open Source GOG and Epic Games Launcher.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.heroicgameslauncher.hgl
+
+# ProtonGE 
+name:Proton-GE
+url:https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+fr:Version personnalisée de Proton.
+en:Custom build of Proton.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+
+# ProtonUP-QT
+name:ProtonUp-Qt
+url:https://flathub.org/apps/details/net.davidotek.pupgui2
+fr:Installe des outils basés sur Wine et Proton.
+en:Install Wine- and Proton-based tools.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.davidotek.pupgui2
+
+# RPCS3
+name:RPCS3
+url:https://flathub.org/apps/details/net.rpcs3.RPCS3
+fr:Émulateur Playstation 3.
+en:Playstation 3 emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.rpcs3.RPCS3
+
+# PCSX2
+name:PCSX2
+url:https://flathub.org/apps/details/net.pcsx2.PCSX2
+fr:Émulateur Playstation 2.
+en:Playstation 2 emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.pcsx2.PCSX2
+
+# DuckStation
+name:DuckStation
+url:https://flathub.org/apps/details/org.duckstation.DuckStation
+fr:Émulateur PlayStation 1/PSX.
+en:PlayStation 1/PSX emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.duckstation.DuckStation
+
+# Dolphin Emulator
+name:Dolphin Emulator
+url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
+fr:Émulateur GameCube / Wii / Triforce
+en:GameCube / Wii / Triforce emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
+
+# DeSmuME
+name:DeSmuME
+url:https://flathub.org/apps/details/org.desmume.DeSmuME
+fr:Émulateur Nintendo DS
+en:Nintendo DS emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.desmume.DeSmuME
+
+# DOSBox Staging
+name:DOSBox Staging
+url:https://flathub.org/apps/details/org.duckstation.DuckStation
+fr:Émulateur DOS/x86.
+en:DOS/x86 emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.dosbox-staging
 
 # Flatseal
 name:Flatseal
@@ -118,6 +174,22 @@ en:Messaging, Voice, and Video Client.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.discordapp.Discord
 
+# TeamSpeak
+name:TeamSpeak
+url:https://flathub.org/apps/details/com.teamspeak.TeamSpeak
+fr:Client de voix sur IP TeamSpeak
+en:TeamSpeak VoIP application.
+security:Potentiellement non fiable : code propriétaire
+flatpak install --assumeyes --noninteractive flathub com.teamspeak.TeamSpeak
+
+# AntiMicroX
+name:AntiMicroX
+url:https://flathub.org/apps/details/io.github.antimicrox.antimicrox
+fr:Configurer les boutons de la manette.
+en:Map gamepad buttons.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.antimicrox.antimicrox
+
 # OpenRGB
 name:OpenRGB
 url:https://flathub.org/apps/details/org.openrgb.OpenRGB
@@ -125,6 +197,14 @@ fr:Contrôle des lumières RGB.
 en:RGB lighting control.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub org.openrgb.OpenRGB
+
+# Coolero
+name:Coolero
+url:https://flathub.org/apps/details/org.coolero.Coolero
+fr:Contrôle des systèmes de refroidissement.
+en:monitor and control your cooling devices.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.coolero.Coolero
 
 # Spotify
 name:Spotify
@@ -156,7 +236,15 @@ url:https://flathub.org/apps/details/com.leinardi.gst
 fr:Stresse divers composants matériels du PC.
 en:Stress and monitor various hardware components.
 security:[✓]
-flatpak install --assumeyes --noninteractive flathub com.leinardi.gst"
+flatpak install --assumeyes --noninteractive flathub com.leinardi.gst
+
+# GNOME Boxes
+name:GNOME Boxes
+url:https://flathub.org/apps/details/org.gnome.Boxes
+fr:La virtualisation facile.
+en:Virtualization made simple
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.gnome.Boxes"
 
 GAMING_FLATPAK_GUI=none
 
@@ -322,8 +410,8 @@ case ${GAMING_FLATPAK_GUI} in
     #echo "**$B**"
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
-    --width 860\
-    --height 440\
+    --width 880\
+    --height 700\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -364,7 +452,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 860x440 )
+    "$B" --geometry 880x700 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"
