@@ -30,7 +30,7 @@ Soit vous double-clickez directement sur le script "gaming-flatpak.sh", soit vou
 * `fr:` supporte la plus part des distributions ; tant qu'elles peuvent installer flatpak.
 * Interface for Gnome (Zenity), KDE (Kdialog) and Command line (Bash).
 * `fr:` Interface pour Gnome (Zenity), KDE (Kdialog) et la ligne de commande (Bash).
-![Gnome](img/gf-zenity.png)
+![Gnome](img/gf-zenity-0.3.png)
 ![KDE](img/gf-kdialog.png)
 ![Cli](img/gf-cli.png)
 
