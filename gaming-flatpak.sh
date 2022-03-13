@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.5
+GAMING_FLATPAK_VERSION=0.6
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -98,9 +98,17 @@ flatpak install --assumeyes --noninteractive flathub com.valvesoftware.Steam.Com
 name:ProtonUp-Qt
 url:https://flathub.org/apps/details/net.davidotek.pupgui2
 fr:Installe des outils basés sur Wine et Proton.
-en:Install Wine- and Proton-based tools.
+en:Install Wine- and Proton- based tools.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.davidotek.pupgui2
+
+# Athenaeum
+name:Athenaeum
+url:https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
+fr:Lanceur pour les jeux libres.
+en:A libre replacement for Steam.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
 
 # RPCS3
 name:RPCS3
@@ -110,21 +118,21 @@ en:Playstation 3 emulator.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.rpcs3.RPCS3
 
-# PCSX2
-name:PCSX2
-url:https://flathub.org/apps/details/net.pcsx2.PCSX2
-fr:Émulateur Playstation 2.
-en:Playstation 2 emulator.
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub net.pcsx2.PCSX2
+# PCSX2: included in RetroArch
+#name:PCSX2
+#url:https://flathub.org/apps/details/net.pcsx2.PCSX2
+#fr:Émulateur Playstation 2.
+#en:Playstation 2 emulator.
+#security:[✓]
+#flatpak install --assumeyes --noninteractive flathub net.pcsx2.PCSX2
 
-# DuckStation
-name:DuckStation
-url:https://flathub.org/apps/details/org.duckstation.DuckStation
-fr:Émulateur PlayStation 1/PSX.
-en:PlayStation 1/PSX emulator.
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub org.duckstation.DuckStation
+# DuckStation: included in RetroArch
+#name:DuckStation
+#url:https://flathub.org/apps/details/org.duckstation.DuckStation
+#fr:Émulateur PlayStation 1/PSX.
+#en:PlayStation 1/PSX emulator.
+#security:[✓]
+#flatpak install --assumeyes --noninteractive flathub org.duckstation.DuckStation
 
 # Yuzu
 name:Yuzu
@@ -145,13 +153,21 @@ flatpak install --assumeyes --noninteractive flathub app.xemu.xemu
 # GNOME Games
 name:GNOME Games
 url:https://flathub.org/apps/details/org.gnome.Games
-fr:Lanceur de jeux avec des émulateurs.
+fr:Lanceur pour jeux rétros émulés.
 en:Game launcher with emulators.
 security:[✓]
 dependencies:flatpak install flathub --assumeyes --noninteractive org.gnome.Games.LibretroPlugin.PicoDrive
 flatpak install --assumeyes --noninteractive flathub org.gnome.Games
 
-# Dolphin Emulator: included in Gnome Games
+# RetroArch
+name:RetroArch
+url:https://flathub.org/apps/details/org.libretro.RetroArch
+fr:Lanceur pour jeux rétros émulés.
+en:Game launcher with emulators.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.libretro.RetroArch
+
+# Dolphin Emulator: included in Gnome Games/RetroArch
 #name:Dolphin Emulator
 #url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
 #fr:Émulateur GameCube / Wii / Triforce
@@ -159,7 +175,7 @@ flatpak install --assumeyes --noninteractive flathub org.gnome.Games
 #security:[✓]
 #flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
 
-# DeSmuME: included in Gnome Games
+# DeSmuME: included in Gnome Games/RetroArch
 #name:DeSmuME
 #url:https://flathub.org/apps/details/org.desmume.DeSmuME
 #fr:Émulateur Nintendo DS
@@ -174,6 +190,22 @@ fr:Émulateur DOS/x86.
 en:DOS/x86 emulator.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub io.github.dosbox-staging
+
+# Minecraft
+name:Minecraft
+url:https://flathub.org/apps/details/com.mojang.Minecraft
+fr:Minecraft
+en:Minecraft
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.mojang.Minecraft
+
+# Fightcade
+name:Fightcade
+url:https://flathub.org/apps/details/com.fightcade.Fightcade
+fr:Jeux rétros en ligne.
+en:Play retro games online.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.fightcade.Fightcade
 
 # Flatseal
 name:Flatseal
@@ -436,7 +468,7 @@ case ${GAMING_FLATPAK_GUI} in
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
     --width 880\
-    --height 720\
+    --height 770\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -477,7 +509,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 880x720 )
+    "$B" --geometry 880x770 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"

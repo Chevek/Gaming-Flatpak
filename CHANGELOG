@@ -1,3 +1,7 @@
+0.6-alpha
+* Added Athenaeum, Minecraft, RetroArch, Fightcade.
+* Removed : PCSX2, DuckStation as they are included in RetroArch.
+
 0.5-alpha
 * Hotfix for Yuzu et xemu installation
 
