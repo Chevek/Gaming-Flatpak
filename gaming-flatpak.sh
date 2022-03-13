@@ -169,7 +169,7 @@ flatpak install --assumeyes --noninteractive flathub org.gnome.Games
 
 # DOSBox Staging
 name:DOSBox Staging
-url:https://flathub.org/apps/details/org.duckstation.DuckStation
+url:https://flathub.org/apps/details/io.github.dosbox-staging
 fr:Émulateur DOS/x86.
 en:DOS/x86 emulator.
 security:[✓]
