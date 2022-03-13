@@ -196,7 +196,7 @@ name:Minecraft
 url:https://flathub.org/apps/details/com.mojang.Minecraft
 fr:Minecraft
 en:Minecraft
-security:[✓]
+security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.mojang.Minecraft
 
 # Fightcade

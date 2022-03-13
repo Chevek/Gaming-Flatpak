@@ -30,7 +30,7 @@ Soit vous double-clickez directement sur le script "gaming-flatpak.sh", soit vou
 * `fr:` supporte la plus part des distributions ; tant qu'elles peuvent installer flatpak.
 * Interface for Gnome (Zenity), KDE (Kdialog) and Command line (Bash).
 * `fr:` Interface pour Gnome (Zenity), KDE (Kdialog) et la ligne de commande (Bash).
-![Gnome](img/gf-zenity-0.4.png)
+![Gnome](img/gf-zenity-0.6.png)
 ![KDE](img/gf-kdialog-0-4.png)
 ![Cli](img/gf-cli-en-0.4.png)
 
@@ -71,13 +71,15 @@ Options :
 - HeroicGamesLauncher: https://flathub.org/apps/details/com.heroicgameslauncher.hgl
 - Proton-GE: https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - ProtonUp-Qt: https://flathub.org/apps/details/net.davidotek.pupgui2
+- Athenaeum: https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
 - RPCS3: https://flathub.org/apps/details/net.rpcs3.RPCS3
-- PCSX2: https://flathub.org/apps/details/net.pcsx2.PCSX2
-- DuckStation: https://flathub.org/apps/details/org.duckstation.DuckStation
 - Yuzu: https://flathub.org/apps/details/org.yuzu_emu.yuzu
 - xemu: https://flathub.org/apps/details/app.xemu.xemu
 - GNOME Games: https://flathub.org/apps/details/org.gnome.Games
+- RetroArch: https://flathub.org/apps/details/org.libretro.RetroArch
 - DOSBox Staging: https://flathub.org/apps/details/io.github.dosbox-staging
+- Minecraft: https://flathub.org/apps/details/com.mojang.Minecraft
+- Fightcade: https://flathub.org/apps/details/com.fightcade.Fightcade
 - Flatseal: https://flathub.org/apps/details/com.github.tchx84.Flatseal
 - Mangohud: https://github.com/flathub/org.freedesktop.Platform.VulkanLayer.MangoHud
 - Discord: https://flathub.org/apps/details/com.discordapp.Discord
