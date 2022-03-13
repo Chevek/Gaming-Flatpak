@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.3
+GAMING_FLATPAK_VERSION=0.4
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 03 - 11         ##
+##         2022 - 03 - 13         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -126,25 +126,50 @@ en:PlayStation 1/PSX emulator.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub org.duckstation.DuckStation
 
-# Dolphin Emulator
-name:Dolphin Emulator
-url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
-fr:Émulateur GameCube / Wii / Triforce
-en:GameCube / Wii / Triforce emulator.
+# Yuzu
+name:Yuzu
+url:https://flathub.org/apps/details/org.yuzu_emu.yuzu
+fr:Émulateur Nintendo Switch.
+en:Nintendo Switch emulator
 security:[✓]
-flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
+flatpak install flathub org.yuzu_emu.yuzu
 
-# DeSmuME
-name:DeSmuME
-url:https://flathub.org/apps/details/org.desmume.DeSmuME
-fr:Émulateur Nintendo DS
-en:Nintendo DS emulator.
+# xemu
+name:xemu
+url:https://flathub.org/apps/details/app.xemu.xemu
+fr:Émulateur Xbox.
+en:Xbox Emulator.
 security:[✓]
-flatpak install --assumeyes --noninteractive flathub org.desmume.DeSmuME
+flatpak install flathub app.xemu.xemu
+
+# GNOME Games
+name:GNOME Games
+url:https://flathub.org/apps/details/org.gnome.Games
+fr:Lanceur de jeux avec des émulateurs.
+en:Game launcher with emulators.
+security:[✓]
+dependencies:flatpak install flathub --assumeyes --noninteractive org.gnome.Games.LibretroPlugin.PicoDrive
+flatpak install --assumeyes --noninteractive flathub org.gnome.Games
+
+# Dolphin Emulator: included in Gnome Games
+#name:Dolphin Emulator
+#url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
+#fr:Émulateur GameCube / Wii / Triforce
+#en:GameCube / Wii / Triforce emulator.
+#security:[✓]
+#flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
+
+# DeSmuME: included in Gnome Games
+#name:DeSmuME
+#url:https://flathub.org/apps/details/org.desmume.DeSmuME
+#fr:Émulateur Nintendo DS
+#en:Nintendo DS emulator.
+#security:[✓]
+#flatpak install --assumeyes --noninteractive flathub org.desmume.DeSmuME
 
 # DOSBox Staging
 name:DOSBox Staging
-url:https://flathub.org/apps/details/org.duckstation.DuckStation
+url:https://flathub.org/apps/details/io.github.dosbox-staging
 fr:Émulateur DOS/x86.
 en:DOS/x86 emulator.
 security:[✓]
@@ -411,7 +436,7 @@ case ${GAMING_FLATPAK_GUI} in
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
     --width 880\
-    --height 700\
+    --height 720\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -437,7 +462,7 @@ case ${GAMING_FLATPAK_GUI} in
         ((k++))
       done
     done <<< "$ZENITY_LIST"
-
+    # For debuging purpose:
     #for (( i = 0; i < ${#SELECTED_SOFTWARES_TO_INSTALL[@]}; i++ ))
     #do
     #  k="${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
@@ -452,7 +477,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 880x700 )
+    "$B" --geometry 880x720 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"
@@ -462,6 +487,7 @@ case ${GAMING_FLATPAK_GUI} in
     IFS=$'\n'
     SELECTED_SOFTWARES_TO_INSTALL=($KDIALOG_LIST)
     IFS=$SAVEIFS   # Restore original IFS
+    # For debuging purpose:
     #for (( i = 0; i < ${#SELECTED_SOFTWARES_TO_INSTALL[@]}; i++ ))
     #do
     #  echo "*${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
@@ -492,6 +518,7 @@ case ${GAMING_FLATPAK_GUI} in
       ((j++))
     fi
   done
+  # For debuging purpose:
   #for (( i = 0; i < ${#SELECTED_SOFTWARES_TO_INSTALL[@]}; i++ ))
   #do
   #  k="${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
@@ -567,9 +594,9 @@ if [[ "$ANY_ERROR" == *"Remotes found with refs similar to"* || "$ANY_ERROR" == 
   COMMAND_TO_RUN="$*"
   COMMAND_TO_RUN=${COMMAND_TO_RUN/flatpak install/flatpak install --system}
   # Rerun the command
-  echo "Previous attempt failed, installing: ${COMMAND_TO_RUN}." >> gaming-flatpack.log.txt
+  echo "Previous attempt failed, installing: ${COMMAND_TO_RUN}." >> gaming-flatpak.log.txt
   ANY_ERROR=$(${COMMAND_TO_RUN} 2>&1)
-  echo "$ANY_ERROR" >> gaming-flatpack.log.txt
+  echo "$ANY_ERROR" >> gaming-flatpak.log.txt
 fi  
   
 if [[ "$ANY_ERROR" == *"error: Flatpak system operation Configure not allowed for user"* || "$ANY_ERROR" == *"Flatpak system operation Deploy not allowed for user"* ]]; then
@@ -605,16 +632,16 @@ if [[ "$ANY_ERROR" == *"error: Flatpak system operation Configure not allowed fo
   COMMAND_TO_RUN="$*"
   COMMAND_TO_RUN=${COMMAND_TO_RUN/--user/--system}
   if Can_we_use_sudo ; then
-    echo "Previous attempt failed, installing: ${COMMAND_TO_RUN} # using sudo." >> gaming-flatpack.log.txt
+    echo "Previous attempt failed, installing: ${COMMAND_TO_RUN} # using sudo." >> gaming-flatpak.log.txt
     # SECURITY ISSUE: we do not want the password in a log file!
-    #echo "$PASSWRD" | sudo -S ${COMMAND_TO_RUN} >> gaming-flatpack.log.txt
+    #echo "$PASSWRD" | sudo -S ${COMMAND_TO_RUN} >> gaming-flatpak.log.txt
     echo "$PASSWRD" | sudo -S ${COMMAND_TO_RUN}
     # Line return in the terminal
     echo " "
   else
-    echo "Previous attempt failed, installing: ${COMMAND_TO_RUN} # using su." >> gaming-flatpack.log.txt
+    echo "Previous attempt failed, installing: ${COMMAND_TO_RUN} # using su." >> gaming-flatpak.log.txt
     # SECURITY ISSUE: we do not want the password in a log file!
-    #{ sleep 3; echo "$PASSWRD"; } | script -q -c "su -c '${COMMAND_TO_RUN}'" >> gaming-flatpack.log.txt
+    #{ sleep 3; echo "$PASSWRD"; } | script -q -c "su -c '${COMMAND_TO_RUN}'" >> gaming-flatpak.log.txt
     { sleep 3; echo "$PASSWRD"; } | script -q -c "su -c '${COMMAND_TO_RUN}'"
     # Line return in the terminal
     echo " "
@@ -624,9 +651,9 @@ fi
 
 Install_using_flatpak()
 {
-echo "Trying to install: $*" >> gaming-flatpack.log.txt
+echo "Trying to install: $*" >> gaming-flatpak.log.txt
 ANY_ERROR=$($* 2>&1)
-echo "$ANY_ERROR" >> gaming-flatpack.log.txt
+echo "$ANY_ERROR" >> gaming-flatpak.log.txt
 Deal_with_errors_on_installation $*
 }
 
@@ -636,7 +663,7 @@ if [[ ! -z "${DEPENDENCIES_FLATPAK[$j]}" ]]; then
   l=""
   while IFS='|' read -ra NAMES; do
     for l in "${NAMES[@]}"; do
-      echo "Installation de la dépendance de ${SOFTWARE_NAME[$j]}: $l" >> gaming-flatpack.log.txt
+      echo "Installation de la dépendance de ${SOFTWARE_NAME[$j]}: $l" >> gaming-flatpak.log.txt
       Install_using_flatpak "${l}"
     done
   done <<< "${DEPENDENCIES_FLATPAK[$j]}"
@@ -653,7 +680,7 @@ fi
 
 # EVIL:
 #DISTRIB=awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'
-#echo "Distribution: $DISTRIB" >> gaming-flatpack.log.txt
+#echo "Distribution: $DISTRIB" >> gaming-flatpak.log.txt
 #if [[ $DISTRIB == *ubuntu* ]] ; then
 #
 #fi 
@@ -705,11 +732,11 @@ if ! test -x "$(command -v flatpak 2>/dev/null)"; then
 fi
 
 # Set up working environment
-echo "Set up working environment" >> gaming-flatpack.log.txt
-echo "Adding Flathub repository." >> gaming-flatpack.log.txt
+echo "Set up working environment" >> gaming-flatpak.log.txt
+echo "Adding Flathub repository." >> gaming-flatpak.log.txt
 # Add fluthub repository
 Install_using_flatpak "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo"
-echo "Update Flatpaks repositories." >> gaming-flatpack.log.txt
+echo "Update Flatpaks repositories." >> gaming-flatpak.log.txt
 # Update flatpak
 Install_using_flatpak "flatpak update --assumeyes --noninteractive"
 
@@ -725,9 +752,9 @@ do
   j="${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
   PERCENT=$(($i*100/${TOTAL_COMMANDS}))
   echo "$PERCENT"
-  echo "$PERCENT%" >> gaming-flatpack.log.txt
+  echo "$PERCENT%" >> gaming-flatpak.log.txt
   echo "# Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}"
-  echo "# Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpack.log.txt
+  echo "# Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpak.log.txt
   # Is there any dependencies?
   Is_there_any_dependencies
   Install_using_flatpak "${COMMANDS_TO_INSTALL[$j]}"
@@ -767,9 +794,9 @@ do
   j="${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
   ${QDBUS_NAME} $dbusRef Set "" value $i
   ${QDBUS_NAME} $dbusRef setLabelText "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}"
-  echo "$i" >> gaming-flatpack.log.txt
-  echo "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpack.log.txt
-  #echo "Installing: ${COMMANDS_TO_INSTALL[$j]}." >> gaming-flatpack.log.txt
+  echo "$i" >> gaming-flatpak.log.txt
+  echo "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpak.log.txt
+  #echo "Installing: ${COMMANDS_TO_INSTALL[$j]}." >> gaming-flatpak.log.txt
   #sleep 5
   Is_there_any_dependencies
   Install_using_flatpak "${COMMANDS_TO_INSTALL[$j]}"
@@ -786,10 +813,10 @@ do
   j="${SELECTED_SOFTWARES_TO_INSTALL[$i]}"
   PERCENT=$(($i*100/${TOTAL_COMMANDS}))
   echo "$PERCENT%"
-  echo "$PERCENT%" >> gaming-flatpack.log.txt
+  echo "$PERCENT%" >> gaming-flatpak.log.txt
   echo "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}"
-  echo "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpack.log.txt
-  echo "Installing ${COMMANDS_TO_INSTALL[$j]}." >> gaming-flatpack.log.txt
+  echo "Installation de ${SOFTWARE_NAME[$j]} : ${LABELS_TO_COMMANDS[$j]}" >> gaming-flatpak.log.txt
+  echo "Installing ${COMMANDS_TO_INSTALL[$j]}." >> gaming-flatpak.log.txt
   Is_there_any_dependencies
   Install_using_flatpak "${COMMANDS_TO_INSTALL[$j]}"
 done
