@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.4
+GAMING_FLATPAK_VERSION=0.5
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -132,7 +132,7 @@ url:https://flathub.org/apps/details/org.yuzu_emu.yuzu
 fr:Émulateur Nintendo Switch.
 en:Nintendo Switch emulator
 security:[✓]
-flatpak install flathub org.yuzu_emu.yuzu
+flatpak install --assumeyes --noninteractive flathub org.yuzu_emu.yuzu
 
 # xemu
 name:xemu
@@ -140,7 +140,7 @@ url:https://flathub.org/apps/details/app.xemu.xemu
 fr:Émulateur Xbox.
 en:Xbox Emulator.
 security:[✓]
-flatpak install flathub app.xemu.xemu
+flatpak install --assumeyes --noninteractive flathub app.xemu.xemu
 
 # GNOME Games
 name:GNOME Games
