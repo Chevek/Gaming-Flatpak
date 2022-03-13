@@ -1,4 +1,9 @@
-.0.3-alpah
+0.4-alpha
+* added more emulators: Yuzu, xemu, GNOME Games (with PicoDrive).
+* Removed some emulators as they are included in GNOME Games: Dolphin & DeSmuME.
+* Typo in the log file corrected: now it's "gaming-flatpak.log.txt"
+
+0.3-alpha
 * Added applications: Heroic Games Launcher, TeamSpeak, GNOME Boxes, DuckStation, DOSBox Staging, Dolphin Emulator, DeSmuME, AntiMicroX, Coolero, RPCS3, PCSX2.
 * Resize selecting window (zenity & kdialog)
 
