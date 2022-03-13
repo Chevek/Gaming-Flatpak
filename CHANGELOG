@@ -1,3 +1,6 @@
+0.5-alpha
+* Hotfix for Yuzu et xemu installation
+
 0.4-alpha
 * added more emulators: Yuzu, xemu, GNOME Games (with PicoDrive).
 * Removed some emulators as they are included in GNOME Games: Dolphin & DeSmuME.
