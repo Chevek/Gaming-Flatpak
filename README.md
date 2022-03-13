@@ -31,8 +31,8 @@ Soit vous double-clickez directement sur le script "gaming-flatpak.sh", soit vou
 * Interface for Gnome (Zenity), KDE (Kdialog) and Command line (Bash).
 * `fr:` Interface pour Gnome (Zenity), KDE (Kdialog) et la ligne de commande (Bash).
 ![Gnome](img/gf-zenity-0.6.png)
-![KDE](img/gf-kdialog-0-4.png)
-![Cli](img/gf-cli-en-0.4.png)
+![KDE](img/gf-kdialog-0-6.png)
+![Cli](img/gf-cli-en-0-6.png)
 
 * Multi language support (currently French and mostly English)
 * `fr:` Support multi-langues (français et plus ou moins l'anglais)
