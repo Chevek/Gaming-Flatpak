@@ -72,6 +72,7 @@ Options :
 - Proton-GE: https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - ProtonUp-Qt: https://flathub.org/apps/details/net.davidotek.pupgui2
 - Athenaeum: https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
+- Xbox Cloud Gaming: https://github.com/flathub/com.microsoft.Edge/
 - RPCS3: https://flathub.org/apps/details/net.rpcs3.RPCS3
 - Yuzu: https://flathub.org/apps/details/org.yuzu_emu.yuzu
 - xemu: https://flathub.org/apps/details/app.xemu.xemu

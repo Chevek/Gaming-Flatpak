@@ -500,7 +500,7 @@ case ${GAMING_FLATPAK_GUI} in
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
     --width 880\
-    --height 770\
+    --height 790\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -541,7 +541,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 880x770 )
+    "$B" --geometry 880x790 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"
