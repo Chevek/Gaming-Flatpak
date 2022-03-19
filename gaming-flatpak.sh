@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.7
+GAMING_FLATPAK_VERSION=0.8
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -110,11 +110,11 @@ en:A libre replacement for Steam.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
 
-# Xbox Cloud Gaming
-name:Xbox Cloud Gaming
+# Xbox Cloud Gaming & Stadia
+name:Xbox Cloud Gaming & Stadia
 url:https://github.com/flathub/com.microsoft.Edge/
-fr:Microsoft Edge BETA for Xbox Cloud Gaming.
-en:Microsoft Edge BETA for Xbox Cloud Gaming.
+fr:Microsoft Edge pour Xbox Cloud Gaming & Stadia.
+en:Microsoft Edge for Xbox Cloud Gaming & Stadia.
 security:Vient du dépôt flathub-beta.
 dependencies:flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 dependencies:flatpak update --assumeyes --noninteractive
@@ -125,8 +125,11 @@ postinstall:flatpak --user override --filesystem=/run/udev:ro com.microsoft.Edge
 # We place a .desktop to get a nice Xbox cloud gaming launcher, with its logo:
 postinstall:cp $PWD/img/Xbox_Cloud_Gaming_Icon.jpg $HOME/.local/share/applications/
 postinstall:cp $PWD/desktop/xbox.cloud.gaming.desktop $HOME/.local/share/applications/
+postinstall:cp $PWD/img/stadia_logo_icon_144848.png $HOME/.local/share/applications/
+postinstall:cp $PWD/desktop/stadia.desktop $HOME/.local/share/applications/
 # The icon is in the HOME folder, we need to get the absolute path, replacing ~ with it:
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/xbox.cloud.gaming.desktop
+postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/stadia.desktop
 flatpak install --assumeyes --noninteractive --system flathub-beta com.microsoft.Edge
 
 # RPCS3
