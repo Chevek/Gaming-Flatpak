@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.6
+GAMING_FLATPAK_VERSION=0.7
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 03 - 13         ##
+##         2022 - 03 - 19         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -109,6 +109,25 @@ fr:Lanceur pour les jeux libres.
 en:A libre replacement for Steam.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
+
+# Xbox Cloud Gaming
+name:Xbox Cloud Gaming
+url:https://github.com/flathub/com.microsoft.Edge/
+fr:Microsoft Edge BETA for Xbox Cloud Gaming.
+en:Microsoft Edge BETA for Xbox Cloud Gaming.
+security:Vient du dépôt flathub-beta.
+dependencies:flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+dependencies:flatpak update --assumeyes --noninteractive
+# Why do we need Godot?!
+dependencies:flatpak install --assumeyes --noninteractive --system flathub-beta org.godotengine.Godot
+# Gamepad support:
+postinstall:flatpak --user override --filesystem=/run/udev:ro com.microsoft.Edge
+# We place a .desktop to get a nice Xbox cloud gaming launcher, with its logo:
+postinstall:cp $PWD/img/Xbox_Cloud_Gaming_Icon.jpg $HOME/.local/share/applications/
+postinstall:cp $PWD/desktop/xbox.cloud.gaming.desktop $HOME/.local/share/applications/
+# The icon is in the HOME folder, we need to get the absolute path, replacing ~ with it:
+postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/xbox.cloud.gaming.desktop
+flatpak install --assumeyes --noninteractive --system flathub-beta com.microsoft.Edge
 
 # RPCS3
 name:RPCS3
@@ -196,7 +215,7 @@ name:Minecraft
 url:https://flathub.org/apps/details/com.mojang.Minecraft
 fr:Minecraft
 en:Minecraft
-security:[✓]
+security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.mojang.Minecraft
 
 # Fightcade
@@ -315,6 +334,7 @@ declare -a SOFTWARE_NAME
 declare -a SOFTWARE_SECURITY
 declare -a SELECTED_SOFTWARES_TO_INSTALL
 declare -a DEPENDENCIES_FLATPAK
+declare -a POSTINSTALL_FLATPAK
 declare -a CHOICES
 
 # set the password variable to empty
@@ -407,6 +427,12 @@ do
         DEPENDENCIES_FLATPAK[$i]+="${line/dependencies:/}|"
         #echo "#$i#${DEPENDENCIES_FLATPAK[$i]}"
         ;;
+      postinstall:*) 
+        # In some cases, we might want to override flatpak configuration
+        # We append all postinstall here, using "|" as a separator (and there will be an extra | at the end)
+        POSTINSTALL_FLATPAK[$i]+="${line/postinstall:/}|"
+        #echo "#$i#${POSTINSTALL_FLATPAK[$i]}"
+        ;;
       flatpak*)
         # Flatpak command
         if [[ -z "${UPSTREAM_URLS[$i]}" ]]; then
@@ -418,6 +444,12 @@ do
           DEPENDENCIES_FLATPAK[$i]=${DEPENDENCIES_FLATPAK[$i]::-1}
           #echo "*$i*${DEPENDENCIES_FLATPAK[$i]}"
         fi
+        # postinstall: if any, we delete the last character which is an extra | (separator)
+        if [[ ! -z "${POSTINSTALL_FLATPAK[$i]}" ]]; then
+          POSTINSTALL_FLATPAK[$i]=${POSTINSTALL_FLATPAK[$i]::-1}
+          #echo "*$i*${POSTINSTALL_FLATPAK[$i]}"
+        fi
+        
         # The command to install
         COMMANDS_TO_INSTALL[$i]=${line}
         if [[ -z "${LABELS_TO_COMMANDS[$i]}" && ! -z "${DEFAULT_LABELS_TO_COMMANDS}" ]]; then
@@ -468,7 +500,7 @@ case ${GAMING_FLATPAK_GUI} in
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
     --width 880\
-    --height 770\
+    --height 790\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -509,7 +541,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 880x770 )
+    "$B" --geometry 880x790 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"
@@ -683,8 +715,8 @@ fi
 
 Install_using_flatpak()
 {
-echo "Trying to install: $*" >> gaming-flatpak.log.txt
-ANY_ERROR=$($* 2>&1)
+echo "Trying to do: $*" >> gaming-flatpak.log.txt
+ANY_ERROR=$(eval $* 2>&1)
 echo "$ANY_ERROR" >> gaming-flatpak.log.txt
 Deal_with_errors_on_installation $*
 }
@@ -701,6 +733,20 @@ if [[ ! -z "${DEPENDENCIES_FLATPAK[$j]}" ]]; then
   done <<< "${DEPENDENCIES_FLATPAK[$j]}"
 fi  
 }
+
+Is_there_any_postinstall()
+{
+if [[ ! -z "${POSTINSTALL_FLATPAK[$j]}" ]]; then
+  l=""
+  while IFS='|' read -ra NAMES; do
+    for l in "${NAMES[@]}"; do
+      echo "Post-installation de la dépendance de ${SOFTWARE_NAME[$j]}: $l" >> gaming-flatpak.log.txt
+      Install_using_flatpak "${l}"
+    done
+  done <<< "${POSTINSTALL_FLATPAK[$j]}"
+fi  
+}
+
 ###########################################################################################
 # Script start here:
 
@@ -790,6 +836,7 @@ do
   # Is there any dependencies?
   Is_there_any_dependencies
   Install_using_flatpak "${COMMANDS_TO_INSTALL[$j]}"
+  Is_there_any_postinstall
 done
 # We do not want to store the password any more than necessary!
 unset PASSWRD
