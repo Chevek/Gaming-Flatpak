@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gaming Flatpak
+Comment=Bash Script to install Tools for gaming using Flatpaks
+Exec=/usr/share/orchid/tools/Gaming-Flatpak/gaming-flatpak.sh
+#Icon=/path/to/icon
+Terminal=false
+Type=Application  
+

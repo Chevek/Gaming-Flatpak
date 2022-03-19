@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Xbox Gaming Pass
+GenericName=Cloud Gaming
+Comment=Access the Cloud Xbox Gaming Pass
+Exec=/usr/bin/flatpak run --branch=beta --arch=x86_64 --command=/app/bin/edge --file-forwarding com.microsoft.Edge --kiosk "https://www.xbox.com/play" @@u %U @@
+StartupNotify=true
+Terminal=false
+Icon=~/.local/share/applications/Xbox_Cloud_Gaming_Icon.jpg
+StartupWMClass=microsoft-edge-beta
+Type=Application
+Categories=WebBrowser;
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.microsoft.Edge
+

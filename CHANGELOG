@@ -1,4 +1,7 @@
 0.7-alpha
+* Added Xbox Cloud Gaming: it use Miscrosoft Edge Web Browser BETA to connect to the cloud service. Add a .desktop file in the HOME user to get a better usability.
+* Added icons: Xbox_Cloud_Gaming_Icon.jpg from Microsoft for the Steam Deck see https://www.reddit.com/r/MicrosoftEdge/comments/th77w9/microsoft_edge_beta_the_browser_for_xbox_cloud/ , for the script gaming-flatpat we will use this: applications-games-symbolic.svg from https://gitlab.gnome.org/GNOME/adwaita-icon-theme/-/blob/master/Adwaita/scalable/categories/applications-games-symbolic.svg (This work is licenced under the terms of either the GNU LGPL v3 or Creative Commons Attribution-Share Alike 3.0 United States License.)
+* Added an exemple of .desktop for the script: gaming-flatpak.desktop. This is in use in Orchid Linux: https://github.com/wamuu-sudo/orchid
 * Changed Minecraft safety commentary.
 
 0.6-alpha
