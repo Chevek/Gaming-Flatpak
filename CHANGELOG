@@ -1,3 +1,9 @@
+0.9-alpha
+* Lutris bumped dependencies on Gnome to version 42, this release fix the Lutris installation, and probably need a new run to reinstall Lutris if Lutris was already installed, and was updated to the latest version.
+* Changed Microsoft Edge safety comment
+* Ajusted window size
+* unselect option is still work in progress (non fonctionnal)
+
 0.8-alpha
 * Added Stadia: it use Miscrosoft Edge Web Browser BETA to connect to the cloud service. Add a .desktop file in the HOME user to get a better usability.
 * Added icons: stadia_logo_icon_144848.png from https://icon-icons.com/icon/stadia-logo/144848 license: Attribution 4.0 International (CC BY 4.0) 

@@ -71,10 +71,10 @@ en:Gaming platform.
 security:Vient du dépôt flathub-beta.
 dependencies:flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 dependencies:flatpak update --assumeyes --noninteractive
-dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform/x86_64/41
-dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform.Compat.i386/x86_64/41
+dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform/x86_64/42
+dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform.Compat.i386/x86_64/42
 dependencies:flatpak install --assumeyes --noninteractive flathub org.freedesktop.Platform.GL32.default/x86_64/21.08
-# already installed with flathub org.gnome.Platform/x86_64/41:
+# already installed with flathub org.gnome.Platform/x86_64/42:
 #dependencies:flatpak install --assumeyes --noninteractive flathub org.freedesktop.Platform.GL.default/x86_64/21.08
 flatpak install --user --assumeyes --noninteractive flathub-beta net.lutris.Lutris//beta
 
@@ -115,14 +115,14 @@ name:Xbox Cloud Gaming & Stadia
 url:https://github.com/flathub/com.microsoft.Edge/
 fr:Microsoft Edge pour Xbox Cloud Gaming & Stadia.
 en:Microsoft Edge for Xbox Cloud Gaming & Stadia.
-security:Vient du dépôt flathub-beta.
+security:Vient du dépôt flathub-beta, code propriétaire
 dependencies:flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 dependencies:flatpak update --assumeyes --noninteractive
 # Why do we need Godot?!
 dependencies:flatpak install --assumeyes --noninteractive --system flathub-beta org.godotengine.Godot
 # Gamepad support:
 postinstall:flatpak --user override --filesystem=/run/udev:ro com.microsoft.Edge
-# We place a .desktop to get a nice Xbox cloud gaming launcher, with its logo:
+# We place a .desktop in the HOME folder to get nice Xbox cloud gaming & Stadia launchers, with its logos:
 postinstall:cp $PWD/img/Xbox_Cloud_Gaming_Icon.jpg $HOME/.local/share/applications/
 postinstall:cp $PWD/desktop/xbox.cloud.gaming.desktop $HOME/.local/share/applications/
 postinstall:cp $PWD/img/stadia_logo_icon_144848.png $HOME/.local/share/applications/
@@ -372,6 +372,7 @@ Options :
   --gui    Force l'utilisation de fenêtres graphiques  (défaut=zenity)
   --gui=VAR  Choisissez 'zenity' ou 'kdialog' pour vos fenêtres
   --nogui    Installation en mode texte
+  --unselect Décoche tous les choix proposés
   -h, --help  Écrit cette aide
   -v, --version  Écrit la version et sort
 _EOF_
@@ -385,6 +386,7 @@ Options :
   --gui    Force GUI  (default=zenity)
   --gui=VAR  Choose 'zenity' or 'kdialog' for the GUI
   --nogui    Text installation
+  --unselect Unselect all choices
   -h, --help  Display this help
   -v, --version  Display version and exit
 _EOF_
@@ -502,7 +504,7 @@ case ${GAMING_FLATPAK_GUI} in
     #echo "**$B**"
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
-    --width 880\
+    --width 940\
     --height 790\
     --checklist \
     --column "Sélection" \
@@ -544,7 +546,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 880x790 )
+    "$B" --geometry 940x790 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"
@@ -597,6 +599,10 @@ esac
 
 Gaming-Flatpak_detect_gui()
 {
+#for PARAMETERS in "$@"
+#do
+#  if [ -n "$PARAMETERS" ] && 
+#done
   if [ -n "$1" ]; then
     if [ "$1" = "kdialog" ] && test -x "$(command -v kdialog 2>/dev/null)"; then
       GAMING_FLATPAK_GUI=kdialog
