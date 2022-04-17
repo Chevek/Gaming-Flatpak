@@ -1,3 +1,6 @@
+1.10-alpah
+* Fix adding flathub repo on Gentoo
+
 0.9-alpha
 * Lutris bumped dependencies on Gnome to version 42, this release fix the Lutris installation, and probably need a new run to reinstall Lutris if Lutris was already installed, and was updated to the latest version.
 * Changed Microsoft Edge safety comment
