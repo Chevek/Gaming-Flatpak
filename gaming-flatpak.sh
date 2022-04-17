@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.9
+GAMING_FLATPAK_VERSION=0.10
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
