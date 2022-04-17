@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.8
+GAMING_FLATPAK_VERSION=0.10
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 03 - 19         ##
+##         2022 - 03 - 27         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -672,7 +672,7 @@ if [[ "$ANY_ERROR" == *"Remotes found with refs similar to"* || "$ANY_ERROR" == 
   echo "$ANY_ERROR" >> gaming-flatpak.log.txt
 fi  
   
-if [[ "$ANY_ERROR" == *"error: Flatpak system operation Configure not allowed for user"* || "$ANY_ERROR" == *"Flatpak system operation Deploy not allowed for user"* ]]; then
+if [[ "$ANY_ERROR" == *"error: Flatpak system operation Configure not allowed for user"* || "$ANY_ERROR" == *"Flatpak system operation Deploy not allowed for user"* || "$ANY_ERROR" == *"Flatpak system operation ConfigureRemote not allowed for user"* ]]; then
   # We need sudo or su to perform this command!
   # Do we have the password yet ?
   if [ -z "$PASSWRD" ]; then
