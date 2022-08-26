@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.10
+GAMING_FLATPAK_VERSION=0.11
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 03 - 27         ##
+##         2022 - 08 - 26         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -57,26 +57,13 @@ en:Launcher for the Steam service.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.valvesoftware.Steam
 
-# Lutris dependencies
-# org.freedesktop.Platform.GL32.default/x86_64/21.08 org.freedesktop.Platform.GL.default/x86_64/21.08 already installed at this point
-#fr:Installation des dépendances pour Lutris.
-#en:Lutris dependancies installation.
-#flatpak install --user --assumeyes --noninteractive flathub org.gnome.Platform.Compat.i386/x86_64/41
-
 # Lutris
 name:Lutris
 url:https://github.com/flathub/net.lutris.Lutris
 fr:Plateforme pour les jeux.
 en:Gaming platform.
-security:Vient du dépôt flathub-beta.
-dependencies:flatpak remote-add --if-not-exists --user flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-dependencies:flatpak update --assumeyes --noninteractive
-dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform/x86_64/42
-dependencies:flatpak install --assumeyes --noninteractive flathub org.gnome.Platform.Compat.i386/x86_64/42
-dependencies:flatpak install --assumeyes --noninteractive flathub org.freedesktop.Platform.GL32.default/x86_64/21.08
-# already installed with flathub org.gnome.Platform/x86_64/42:
-#dependencies:flatpak install --assumeyes --noninteractive flathub org.freedesktop.Platform.GL.default/x86_64/21.08
-flatpak install --user --assumeyes --noninteractive flathub-beta net.lutris.Lutris//beta
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.lutris.Lutris
 
 # HeroicGamesLauncher
 name:Heroic Games Launcher
@@ -85,6 +72,22 @@ fr:Un lanceur libre pour Epic Games et GOG.
 en:An Open Source GOG and Epic Games Launcher.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub com.heroicgameslauncher.hgl
+
+# Minigalaxy
+name:Minigalaxy
+url:https://flathub.org/apps/details/io.github.sharkwouter.Minigalaxy
+fr:Un client basic pour GOG
+en:A simple GOG client for Linux
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.sharkwouter.Minigalaxy
+
+# Crankshaft
+name:Crankshaft
+url:https://flathub.org/apps/details/space.crankshaft.Crankshaft
+fr:Gestionnaire de plugins pour Steam
+en:Steam client plugin manager and framework
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub space.crankshaft.Crankshaft
 
 # ProtonGE 
 name:Proton-GE
@@ -115,11 +118,7 @@ name:Xbox Cloud Gaming & Stadia
 url:https://github.com/flathub/com.microsoft.Edge/
 fr:Microsoft Edge pour Xbox Cloud Gaming & Stadia.
 en:Microsoft Edge for Xbox Cloud Gaming & Stadia.
-security:Vient du dépôt flathub-beta, code propriétaire
-dependencies:flatpak remote-add --if-not-exists --system flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-dependencies:flatpak update --assumeyes --noninteractive
-# Why do we need Godot?!
-dependencies:flatpak install --assumeyes --noninteractive --system flathub-beta org.godotengine.Godot
+security:Potentiellement non fiable : code propriétaire
 # Gamepad support:
 postinstall:flatpak --user override --filesystem=/run/udev:ro com.microsoft.Edge
 # We place a .desktop in the HOME folder to get nice Xbox cloud gaming & Stadia launchers, with its logos:
@@ -130,7 +129,7 @@ postinstall:cp $PWD/desktop/stadia.desktop $HOME/.local/share/applications/
 # The icon is in the HOME folder, we need to get the absolute path, replacing ~ with it:
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/xbox.cloud.gaming.desktop
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/stadia.desktop
-flatpak install --assumeyes --noninteractive --system flathub-beta com.microsoft.Edge
+flatpak install --assumeyes --noninteractive --system flathub com.microsoft.Edge
 
 # RPCS3
 name:RPCS3
@@ -173,13 +172,14 @@ security:[✓]
 flatpak install --assumeyes --noninteractive flathub app.xemu.xemu
 
 # GNOME Games
-name:GNOME Games
-url:https://flathub.org/apps/details/org.gnome.Games
-fr:Lanceur pour jeux rétros émulés.
-en:Game launcher with emulators.
-security:[✓]
-dependencies:flatpak install flathub --assumeyes --noninteractive org.gnome.Games.LibretroPlugin.PicoDrive
-flatpak install --assumeyes --noninteractive flathub org.gnome.Games
+# will be replaced by https://gitlab.gnome.org/World/highscore ??
+#name:GNOME Games
+#url:https://flathub.org/apps/details/org.gnome.Games
+#fr:Lanceur pour jeux rétros émulés.
+#en:Game launcher with emulators.
+#security:[✓]
+#dependencies:flatpak install flathub --assumeyes --noninteractive org.gnome.Games.LibretroPlugin.PicoDrive
+#flatpak install --assumeyes --noninteractive flathub org.gnome.Games
 
 # RetroArch
 name:RetroArch
@@ -253,6 +253,14 @@ en:Messaging, Voice, and Video Client.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.discordapp.Discord
 
+# Discover Overlay
+name:Discover Overlay
+url:https://flathub.org/apps/details/io.github.trigg.discover_overlay
+fr:Un overlay pour Discord
+en:A graphical overlay for Discord voice chat.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.trigg.discover_overlay
+
 # TeamSpeak
 name:TeamSpeak
 url:https://flathub.org/apps/details/com.teamspeak.TeamSpeak
@@ -260,6 +268,22 @@ fr:Client de voix sur IP TeamSpeak
 en:TeamSpeak VoIP application.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.teamspeak.TeamSpeak
+
+# Piper
+name:Piper
+url:https://flathub.org/apps/details/org.freedesktop.Piper
+fr:Utilitaire de configuration pour les souris
+en:Gaming mouse configuration utility
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.freedesktop.Piper
+
+# GeForce NOW Electron
+name:GeForce NOW Electron
+url:https://flathub.org/apps/details/io.github.hmlendea.geforcenow-electron
+fr:GeForce NOW officieux
+en:Unofficial GeForce NOW
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.hmlendea.geforcenow-electron
 
 # AntiMicroX
 name:AntiMicroX
@@ -284,6 +308,14 @@ fr:Contrôle des systèmes de refroidissement.
 en:monitor and control your cooling devices.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub org.coolero.Coolero
+
+# Boatswain
+name:Boatswain
+url:https://flathub.org/apps/details/com.feaneron.Boatswain
+fr:Contrôle du Stream Deck d'Elgato
+en:Control your Elgato Stream Deck devices
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.feaneron.Boatswain
 
 # Spotify
 name:Spotify
@@ -488,7 +520,7 @@ Cli_selector()
 echo "Choisissez les flatpaks à installer (par défaut, ils sont tous sélectionnés) :"
 for (( i = 0; i < ${#COMMANDS_TO_INSTALL[@]}; i++ ))
 do
-  echo "[${CHOICES[$i]:-✓}]" $(($i+1))") ${SOFTWARE_NAME[$i]} : ${LABELS_TO_COMMANDS[$i]} | Sécurité : ${SOFTWARE_SECURITY[$i]}"
+  echo "[${CHOICES[$i]:- }]" $(($i+1))") ${SOFTWARE_NAME[$i]} : ${LABELS_TO_COMMANDS[$i]} | Sécurité : ${SOFTWARE_SECURITY[$i]}"
 done
 echo "$ERROR_IN_SELECTOR"
 }
@@ -499,7 +531,7 @@ case ${GAMING_FLATPAK_GUI} in
   zenity)
     for (( i = 0; i < ${#COMMANDS_TO_INSTALL[@]}; i++ ))
     do
-      B+="TRUE \"${SOFTWARE_NAME[$i]}\" \"${LABELS_TO_COMMANDS[$i]}\" \"${SOFTWARE_SECURITY[$i]}\" "   
+      B+="FALSE \"${SOFTWARE_NAME[$i]}\" \"${LABELS_TO_COMMANDS[$i]}\" \"${SOFTWARE_SECURITY[$i]}\" "   
     done
     #echo "**$B**"
     ZENITY_LIST=$(eval zenity --list \
@@ -542,7 +574,7 @@ case ${GAMING_FLATPAK_GUI} in
   kdialog)
     for (( i = 0; i < ${#COMMANDS_TO_INSTALL[@]}; i++ ))
     do
-      B+="$i \"${SOFTWARE_NAME[$i]} : ${LABELS_TO_COMMANDS[$i]} | Sécurité : ${SOFTWARE_SECURITY[$i]}\" on "   
+      B+="$i \"${SOFTWARE_NAME[$i]} : ${LABELS_TO_COMMANDS[$i]} | Sécurité : ${SOFTWARE_SECURITY[$i]}\" off "   
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
@@ -568,10 +600,10 @@ case ${GAMING_FLATPAK_GUI} in
     clear
       if [[ "$NUM" == *[[:digit:]]* && $NUM -ge 1 && $NUM -le ${#COMMANDS_TO_INSTALL[@]} ]]; then
           ((NUM--))
-          if [[ "${CHOICES[$NUM]}" == " " ]]; then
-              CHOICES[NUM]="✓"
-          else
+          if [[ "${CHOICES[$NUM]}" == "✓" ]]; then
               CHOICES[NUM]=" "
+          else
+              CHOICES[NUM]="✓"
           fi
               ERROR_IN_SELECTOR=" "
       else
@@ -582,11 +614,16 @@ case ${GAMING_FLATPAK_GUI} in
   j=0
   for (( i = 0; i < ${#COMMANDS_TO_INSTALL[@]}; i++ ))
   do
-    if [[ ! "${CHOICES[$i]}" == " " ]]; then
+    if [[ "${CHOICES[$i]}" == "✓" ]]; then
       SELECTED_SOFTWARES_TO_INSTALL[$j]="$i"
       ((j++))
     fi
   done
+  if [ -z "$SELECTED_SOFTWARES_TO_INSTALL" ]; then
+  	echo "Fatal error: Nothing to install"
+  	echo "Exiting"
+  	exit 1
+  fi
   # For debuging purpose:
   #for (( i = 0; i < ${#SELECTED_SOFTWARES_TO_INSTALL[@]}; i++ ))
   #do
