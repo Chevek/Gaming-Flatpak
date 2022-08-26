@@ -63,7 +63,7 @@ url:https://github.com/flathub/net.lutris.Lutris
 fr:Plateforme pour les jeux.
 en:Gaming platform.
 security:[✓]
-flatpak install --user --assumeyes --noninteractive flathub net.lutris.Lutris
+flatpak install --assumeyes --noninteractive flathub net.lutris.Lutris
 
 # HeroicGamesLauncher
 name:Heroic Games Launcher
