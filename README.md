@@ -67,8 +67,10 @@ Options :
 
 ## Flatpak Sources:
 - Steam: https://flathub.org/apps/details/com.valvesoftware.Steam
-- Lutris: https://github.com/flathub/net.lutris.Lutris
+- Lutris: https://flathub.org/apps/details/net.lutris.Lutris
 - HeroicGamesLauncher: https://flathub.org/apps/details/com.heroicgameslauncher.hgl
+- Minigalaxy: https://flathub.org/apps/details/io.github.sharkwouter.Minigalaxy
+- Crankshaft: https://flathub.org/apps/details/space.crankshaft.Crankshaft
 - Proton-GE: https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - ProtonUp-Qt: https://flathub.org/apps/details/net.davidotek.pupgui2
 - Athenaeum: https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
@@ -76,7 +78,6 @@ Options :
 - RPCS3: https://flathub.org/apps/details/net.rpcs3.RPCS3
 - Yuzu: https://flathub.org/apps/details/org.yuzu_emu.yuzu
 - xemu: https://flathub.org/apps/details/app.xemu.xemu
-- GNOME Games: https://flathub.org/apps/details/org.gnome.Games
 - RetroArch: https://flathub.org/apps/details/org.libretro.RetroArch
 - DOSBox Staging: https://flathub.org/apps/details/io.github.dosbox-staging
 - Minecraft: https://flathub.org/apps/details/com.mojang.Minecraft
@@ -84,10 +85,14 @@ Options :
 - Flatseal: https://flathub.org/apps/details/com.github.tchx84.Flatseal
 - Mangohud: https://github.com/flathub/org.freedesktop.Platform.VulkanLayer.MangoHud
 - Discord: https://flathub.org/apps/details/com.discordapp.Discord
+- Discover Overlay: https://flathub.org/apps/details/io.github.trigg.discover_overlay
 - TeamSpeak: https://flathub.org/apps/details/com.teamspeak.TeamSpeak
+- Piper: https://flathub.org/apps/details/org.freedesktop.Piper
+- GeForce NOW Electron: https://flathub.org/apps/details/io.github.hmlendea.geforcenow-electron
 - AntiMicroX: https://flathub.org/apps/details/io.github.antimicrox.antimicrox
 - OpenRGB: https://flathub.org/apps/details/org.openrgb.OpenRGB
 - Coolero: https://flathub.org/apps/details/org.coolero.Coolero
+- Boatswain: https://flathub.org/apps/details/com.feaneron.Boatswain
 - Spotify: https://flathub.org/apps/details/com.spotify.Client
 - OBS Studio: https://github.com/flathub/com.obsproject.Studio
 - Kdenlive: https://flathub.org/apps/details/org.kde.kdenlive
