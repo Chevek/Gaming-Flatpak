@@ -1,3 +1,7 @@
+0.12-alpha
+* Added: RetroDECK, ludusavi, Steam Link, Chiaki, XIVLauncher, Mumble, Bottles
+* resize window default size to match the Steam Deck: height 690
+
 0.11-alpha
 * Added: Minigalaxy, Crankshaft, Discover Overlay, Piper, GeForce NOW Electron, Boatswain
 * Removed: GNOME Games (unsupported)

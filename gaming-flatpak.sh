@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.11
+GAMING_FLATPAK_VERSION=0.12
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 08 - 26         ##
+##         2022 - 08 - 27         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -105,6 +105,14 @@ en:Install Wine- and Proton- based tools.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.davidotek.pupgui2
 
+# Bottles
+name:Bottles
+url:https://flathub.org/apps/details/com.usebottles.bottles
+fr:Exécute les programmes Windows
+en:Run Windows software
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.usebottles.bottles
+
 # Athenaeum
 name:Athenaeum
 url:https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
@@ -112,6 +120,14 @@ fr:Lanceur pour les jeux libres.
 en:A libre replacement for Steam.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
+
+# Steam Link
+name:Steam Link
+url:https://flathub.org/apps/details/com.valvesoftware.SteamLink
+fr:Stream les jeux depuis un autre ordinateur
+en:Stream games from another computer
+security:Potentiellement non fiable : code propriétaire
+flatpak install --assumeyes --noninteractive flathub com.valvesoftware.SteamLink
 
 # Xbox Cloud Gaming & Stadia
 name:Xbox Cloud Gaming & Stadia
@@ -130,6 +146,14 @@ postinstall:cp $PWD/desktop/stadia.desktop $HOME/.local/share/applications/
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/xbox.cloud.gaming.desktop
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/stadia.desktop
 flatpak install --assumeyes --noninteractive --system flathub com.microsoft.Edge
+
+# Chiaki
+name:Chiaki
+url:https://flathub.org/apps/details/re.chiaki.Chiaki
+fr:Clientpour PlayStation Remote Play
+en:Client for PlayStation Remote Play
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub re.chiaki.Chiaki
 
 # RPCS3
 name:RPCS3
@@ -213,6 +237,22 @@ en:DOS/x86 emulator.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub io.github.dosbox-staging
 
+# RetroDECK
+name:RetroDECK
+url:https://flathub.org/apps/details/net.retrodeck.retrodeck
+fr:Tout pour l'émulation sur le Steam Deck
+en:Everything you need for emulation on Steam Deck
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.retrodeck.retrodeck
+
+# ludusavi
+name:ludusavi
+url:https://flathub.org/apps/details/com.github.mtkennerly.ludusavi
+fr:Backup vos sauvegardes de jeux
+en:Back up your game save data
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.github.mtkennerly.ludusavi
+
 # Minecraft
 name:Minecraft
 url:https://flathub.org/apps/details/com.mojang.Minecraft
@@ -220,6 +260,14 @@ fr:Minecraft
 en:Minecraft
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.mojang.Minecraft
+
+# XIVLauncher
+name:XIVLauncher
+url:https://flathub.org/apps/details/dev.goats.xivlauncher
+fr:Lanceur pour Final Fantasy XIV Online
+en:Launcher for Final Fantasy XIV Online
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub dev.goats.xivlauncher
 
 # Fightcade
 name:Fightcade
@@ -268,6 +316,14 @@ fr:Client de voix sur IP TeamSpeak
 en:TeamSpeak VoIP application.
 security:Potentiellement non fiable : code propriétaire
 flatpak install --assumeyes --noninteractive flathub com.teamspeak.TeamSpeak
+
+# Mumble
+name:Mumble
+url:https://flathub.org/apps/details/info.mumble.Mumble
+fr:Client de voix sur IP à faible latence
+en:Low latency encrypted VoIP client
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub info.mumble.Mumble
 
 # Piper
 name:Piper
@@ -537,7 +593,7 @@ case ${GAMING_FLATPAK_GUI} in
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
     --width 940\
-    --height 790\
+    --height 690\
     --checklist \
     --column "Sélection" \
     --column "Nom" \
@@ -578,7 +634,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 940x790 )
+    "$B" --geometry 940x690 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"

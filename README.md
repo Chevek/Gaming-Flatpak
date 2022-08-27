@@ -73,20 +73,27 @@ Options :
 - Crankshaft: https://flathub.org/apps/details/space.crankshaft.Crankshaft
 - Proton-GE: https://github.com/flathub/com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 - ProtonUp-Qt: https://flathub.org/apps/details/net.davidotek.pupgui2
+- Bottles: https://flathub.org/apps/details/com.usebottles.bottles
 - Athenaeum: https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
+- Steam Link: https://flathub.org/apps/details/com.valvesoftware.SteamLink
 - Xbox Cloud Gaming: https://github.com/flathub/com.microsoft.Edge/
+- Chiaki: https://flathub.org/apps/details/re.chiaki.Chiaki
 - RPCS3: https://flathub.org/apps/details/net.rpcs3.RPCS3
 - Yuzu: https://flathub.org/apps/details/org.yuzu_emu.yuzu
 - xemu: https://flathub.org/apps/details/app.xemu.xemu
 - RetroArch: https://flathub.org/apps/details/org.libretro.RetroArch
 - DOSBox Staging: https://flathub.org/apps/details/io.github.dosbox-staging
+- RetroDECK: https://flathub.org/apps/details/net.retrodeck.retrodeck
+- ludusavi: https://flathub.org/apps/details/com.github.mtkennerly.ludusavi
 - Minecraft: https://flathub.org/apps/details/com.mojang.Minecraft
+- XIVLauncher: https://flathub.org/apps/details/dev.goats.xivlauncher
 - Fightcade: https://flathub.org/apps/details/com.fightcade.Fightcade
 - Flatseal: https://flathub.org/apps/details/com.github.tchx84.Flatseal
 - Mangohud: https://github.com/flathub/org.freedesktop.Platform.VulkanLayer.MangoHud
 - Discord: https://flathub.org/apps/details/com.discordapp.Discord
 - Discover Overlay: https://flathub.org/apps/details/io.github.trigg.discover_overlay
 - TeamSpeak: https://flathub.org/apps/details/com.teamspeak.TeamSpeak
+- Mumble: https://flathub.org/apps/details/info.mumble.Mumble
 - Piper: https://flathub.org/apps/details/org.freedesktop.Piper
 - GeForce NOW Electron: https://flathub.org/apps/details/io.github.hmlendea.geforcenow-electron
 - AntiMicroX: https://flathub.org/apps/details/io.github.antimicrox.antimicrox
