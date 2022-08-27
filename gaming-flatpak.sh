@@ -145,12 +145,12 @@ postinstall:cp $PWD/desktop/stadia.desktop $HOME/.local/share/applications/
 # The icon is in the HOME folder, we need to get the absolute path, replacing ~ with it:
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/xbox.cloud.gaming.desktop
 postinstall:sed -i 's;~;$HOME;g' $HOME/.local/share/applications/stadia.desktop
-flatpak install --assumeyes --noninteractive --system flathub com.microsoft.Edge
+flatpak install --assumeyes --noninteractive flathub com.microsoft.Edge
 
 # Chiaki
 name:Chiaki
 url:https://flathub.org/apps/details/re.chiaki.Chiaki
-fr:Clientpour PlayStation Remote Play
+fr:Client pour PlayStation Remote Play
 en:Client for PlayStation Remote Play
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub re.chiaki.Chiaki
@@ -573,7 +573,7 @@ done < <(printf '%s\n' "$FLATPAKS")
 
 Cli_selector()
 {
-echo "Choisissez les flatpaks à installer (par défaut, ils sont tous sélectionnés) :"
+echo "Choisissez les flatpaks à installer :"
 for (( i = 0; i < ${#COMMANDS_TO_INSTALL[@]}; i++ ))
 do
   echo "[${CHOICES[$i]:- }]" $(($i+1))") ${SOFTWARE_NAME[$i]} : ${LABELS_TO_COMMANDS[$i]} | Sécurité : ${SOFTWARE_SECURITY[$i]}"
