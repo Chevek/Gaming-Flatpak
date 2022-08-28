@@ -8,7 +8,7 @@
 #You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
 ############################################################################################
 # Initialize variables
-GAMING_FLATPAK_VERSION=0.12
+GAMING_FLATPAK_VERSION=0.13
 
 # Commands to install
 FLATPAKS="# This is where you put the Flatpaks commands to install softwares and their descriptions in various langages:
@@ -23,7 +23,7 @@ FLATPAKS="# This is where you put the Flatpaks commands to install softwares and
 ####################################
 ##                                ##
 ##         Gaming Profile         ##
-##         2022 - 08 - 27         ##
+##         2022 - 08 - 28         ##
 ##                                ##
 ####################################
 profile:gaming
@@ -49,6 +49,7 @@ profile:gaming
 ####################################
 # Softwares
 
+## GAME LAUNCHERS
 # Steam 
 name:Steam
 url:https://flathub.org/apps/details/com.valvesoftware.Steam
@@ -81,6 +82,23 @@ en:A simple GOG client for Linux
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub io.github.sharkwouter.Minigalaxy
 
+# Bottles
+name:Bottles
+url:https://flathub.org/apps/details/com.usebottles.bottles
+fr:Exécute les programmes Windows
+en:Run Windows software
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.usebottles.bottles
+
+# Athenaeum
+name:Athenaeum
+url:https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
+fr:Lanceur pour les jeux libres.
+en:A libre replacement for Steam.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
+
+## TWEAKING TOOLS
 # Crankshaft
 name:Crankshaft
 url:https://flathub.org/apps/details/space.crankshaft.Crankshaft
@@ -105,22 +123,7 @@ en:Install Wine- and Proton- based tools.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.davidotek.pupgui2
 
-# Bottles
-name:Bottles
-url:https://flathub.org/apps/details/com.usebottles.bottles
-fr:Exécute les programmes Windows
-en:Run Windows software
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub com.usebottles.bottles
-
-# Athenaeum
-name:Athenaeum
-url:https://flathub.org/apps/details/com.gitlab.librebob.Athenaeum
-fr:Lanceur pour les jeux libres.
-en:A libre replacement for Steam.
-security:[✓]
-flatpak install --assumeyes --noninteractive flathub com.gitlab.librebob.Athenaeum
-
+## GAMES STREAMING TOOLS
 # Steam Link
 name:Steam Link
 url:https://flathub.org/apps/details/com.valvesoftware.SteamLink
@@ -155,6 +158,7 @@ en:Client for PlayStation Remote Play
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub re.chiaki.Chiaki
 
+## EMULATORS
 # RPCS3
 name:RPCS3
 url:https://flathub.org/apps/details/net.rpcs3.RPCS3
@@ -164,12 +168,12 @@ security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.rpcs3.RPCS3
 
 # PCSX2: included in RetroArch
-#name:PCSX2
-#url:https://flathub.org/apps/details/net.pcsx2.PCSX2
-#fr:Émulateur Playstation 2.
-#en:Playstation 2 emulator.
-#security:[✓]
-#flatpak install --assumeyes --noninteractive flathub net.pcsx2.PCSX2
+name:PCSX2
+url:https://flathub.org/apps/details/net.pcsx2.PCSX2
+fr:Émulateur Playstation 2.
+en:Playstation 2 emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.pcsx2.PCSX2
 
 # DuckStation: included in RetroArch
 #name:DuckStation
@@ -179,6 +183,14 @@ flatpak install --assumeyes --noninteractive flathub net.rpcs3.RPCS3
 #security:[✓]
 #flatpak install --assumeyes --noninteractive flathub org.duckstation.DuckStation
 
+# PPSSPP
+name:PPSSPP
+url:https://flathub.org/apps/details/org.ppsspp.PPSSPP
+fr:Émulateur PlayStation Portable
+en:A PlayStation Portable emulator
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.ppsspp.PPSSPP
+
 # Yuzu
 name:Yuzu
 url:https://flathub.org/apps/details/org.yuzu_emu.yuzu
@@ -186,6 +198,38 @@ fr:Émulateur Nintendo Switch.
 en:Nintendo Switch emulator
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub org.yuzu_emu.yuzu
+
+# Citra
+name:Citra
+url:https://flathub.org/apps/details/org.citra_emu.citra
+fr:Émulateur Nintendo 3DS
+en:Nintendo 3DS emulator
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.citra_emu.citra
+
+# Dolphin Emulator: included in Gnome Games/RetroArch
+name:Dolphin Emulator
+url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
+fr:Émulateur GameCube / Wii / Triforce
+en:GameCube / Wii / Triforce emulator.
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
+
+# melonDS
+name:melonDS
+url:https://flathub.org/apps/details/net.kuribo64.melonDS
+fr:Émulateur Nintendo DS et DSi
+en:Nintendo DS and DSi emulator
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub net.kuribo64.melonDS
+
+# DeSmuME: included in Gnome Games/RetroArch
+#name:DeSmuME
+#url:https://flathub.org/apps/details/org.desmume.DeSmuME
+#fr:Émulateur Nintendo DS
+#en:Nintendo DS emulator.
+#security:[✓]
+#flatpak install --assumeyes --noninteractive flathub org.desmume.DeSmuME
 
 # xemu
 name:xemu
@@ -213,22 +257,6 @@ en:Game launcher with emulators.
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub org.libretro.RetroArch
 
-# Dolphin Emulator: included in Gnome Games/RetroArch
-#name:Dolphin Emulator
-#url:https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
-#fr:Émulateur GameCube / Wii / Triforce
-#en:GameCube / Wii / Triforce emulator.
-#security:[✓]
-#flatpak install --assumeyes --noninteractive flathub org.DolphinEmu.dolphin-emu
-
-# DeSmuME: included in Gnome Games/RetroArch
-#name:DeSmuME
-#url:https://flathub.org/apps/details/org.desmume.DeSmuME
-#fr:Émulateur Nintendo DS
-#en:Nintendo DS emulator.
-#security:[✓]
-#flatpak install --assumeyes --noninteractive flathub org.desmume.DeSmuME
-
 # DOSBox Staging
 name:DOSBox Staging
 url:https://flathub.org/apps/details/io.github.dosbox-staging
@@ -244,6 +272,14 @@ fr:Tout pour l'émulation sur le Steam Deck
 en:Everything you need for emulation on Steam Deck
 security:[✓]
 flatpak install --assumeyes --noninteractive flathub net.retrodeck.retrodeck
+
+# BoilR
+name:BoilR
+url:https://flathub.org/apps/details/io.github.philipk.boilr
+fr:Ajouter des jeux non-Steam à Steam
+en:Add non-steam games to your steam library
+security:[✓]
+flatpak install --assumeyes --noninteractive flathub io.github.philipk.boilr
 
 # ludusavi
 name:ludusavi
@@ -592,7 +628,7 @@ case ${GAMING_FLATPAK_GUI} in
     #echo "**$B**"
     ZENITY_LIST=$(eval zenity --list \
     --title="Choisissez\ les\ flatpaks\ à\ installer"\
-    --width 940\
+    --width 1000\
     --height 690\
     --checklist \
     --column "Sélection" \
@@ -634,7 +670,7 @@ case ${GAMING_FLATPAK_GUI} in
     done
     KDIALOG_LIST=$(eval kdialog --separate-output \
     --checklist "Choisissez\ les\ flatpaks\ à\ installer" \
-    "$B" --geometry 940x690 )
+    "$B" --geometry 1000x690 )
     if [ -z "$KDIALOG_LIST" ]; then
       echo "Fatal error: Nothing to install"
       echo "Exiting"

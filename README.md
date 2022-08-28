@@ -65,7 +65,7 @@ Options :
   -v, --version  Écrit la version et sort
 ```
 
-## Flatpak Sources:
+## 44 Flatpak Sources:
 - Steam: https://flathub.org/apps/details/com.valvesoftware.Steam
 - Lutris: https://flathub.org/apps/details/net.lutris.Lutris
 - HeroicGamesLauncher: https://flathub.org/apps/details/com.heroicgameslauncher.hgl
@@ -79,11 +79,16 @@ Options :
 - Xbox Cloud Gaming: https://github.com/flathub/com.microsoft.Edge/
 - Chiaki: https://flathub.org/apps/details/re.chiaki.Chiaki
 - RPCS3: https://flathub.org/apps/details/net.rpcs3.RPCS3
+- PCSX2: https://flathub.org/apps/details/net.pcsx2.PCSX2
+- PPSSPP: https://flathub.org/apps/details/org.ppsspp.PPSSPP
 - Yuzu: https://flathub.org/apps/details/org.yuzu_emu.yuzu
 - xemu: https://flathub.org/apps/details/app.xemu.xemu
 - RetroArch: https://flathub.org/apps/details/org.libretro.RetroArch
+- Citra: https://flathub.org/apps/details/org.citra_emu.citra
+- melonDS: https://flathub.org/apps/details/net.kuribo64.melonDS
 - DOSBox Staging: https://flathub.org/apps/details/io.github.dosbox-staging
 - RetroDECK: https://flathub.org/apps/details/net.retrodeck.retrodeck
+- BoilR: https://flathub.org/apps/details/io.github.philipk.boilr
 - ludusavi: https://flathub.org/apps/details/com.github.mtkennerly.ludusavi
 - Minecraft: https://flathub.org/apps/details/com.mojang.Minecraft
 - XIVLauncher: https://flathub.org/apps/details/dev.goats.xivlauncher

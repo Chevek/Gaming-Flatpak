@@ -1,3 +1,7 @@
+0.13-alpah
+* Added: Citra, melonDS, PPSSPP, PCSX2, BoilR
+* New default window geometry: 1000x690
+
 0.12-alpha
 * Added: RetroDECK, ludusavi, Steam Link, Chiaki, XIVLauncher, Mumble, Bottles
 * resize window default size to match the Steam Deck: height 690
